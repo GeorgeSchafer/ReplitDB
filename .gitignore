@@ -1,6 +1,10 @@
+
 /node_modules
+
 
 .gitignore
 .replit
+.config
+package.json
 package-lock.json
 replit.nix
