@@ -21,13 +21,6 @@ const dbfn = {
         console.log(`\n${dbkey} contains: \n`, value);
       });
   },
-
-  logProperty: (dbkey) => {
-    db.get(dbkey)
-      .then( (value) => {
-        console.log(`${dbkey}.property contains:`, value);
-      });
-  },
   
   deleteRecord: (dbkey) => {
     db.delete(dbkey)
