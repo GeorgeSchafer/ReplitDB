@@ -1,3 +1,6 @@
 /node_modules
 
 .gitignore
+.replit
+package-lock.json
+replit.nix
