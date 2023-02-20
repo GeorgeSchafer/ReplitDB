@@ -27,10 +27,11 @@ const dbfn = {
  * Work in Progress
 */
   logProperty: (dbkey, property) => {
+    dbfn.property = property;
     db.get(dbkey)
       .then( (obj) => {
-        console.log(`${dbkey}.${property} contains:`, 
-                    obj.property);
+        console.log(`${dbkey}.${dbfn.property} contains:`, 
+                    obj[dbfn.property]);
       });
   },
   
@@ -55,7 +56,9 @@ const dbfn = {
       .then(() => {
         console.log(`${dbkey} data logged.`);
       })
-  }
+  },
+
+  property: ''
 }
 
 export {dbfn};
