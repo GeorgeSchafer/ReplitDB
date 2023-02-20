@@ -22,10 +22,6 @@ const dbfn = {
       });
   },
 
-/* 
- * @TODO Finish dbfn.logProperty()
- * Work in Progress
-*/
   logProperty: (dbkey, property) => {
     dbfn.property = property;
     db.get(dbkey)
