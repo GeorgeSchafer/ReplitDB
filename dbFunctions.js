@@ -21,6 +21,15 @@ const dbfn = {
         console.log(`\n${dbkey} contains: \n`, value);
       });
   },
+
+  logProperty: (dbkey, property) => {
+    dbfn.property = property;
+    db.get(dbkey)
+      .then( (obj) => {
+        console.log(`${dbkey}.${dbfn.property} contains:`, 
+                    obj[dbfn.property]);
+      });
+  },
   
   deleteRecord: (dbkey) => {
     db.delete(dbkey)
@@ -43,7 +52,9 @@ const dbfn = {
       .then(() => {
         console.log(`${dbkey} data logged.`);
       })
-  }
+  },
+
+  property: ''
 }
 
 export {dbfn};
