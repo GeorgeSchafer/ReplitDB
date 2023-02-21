@@ -1,4 +1,4 @@
-// For ES6 Projects
+d// For ES6 Projects
 
 // Import & Declare replit Database
 import Database from '@replit/database';
@@ -8,7 +8,7 @@ const dbfn = {
   
   list: () =>{
     db.list()
-      .then(keys => {
+      .then( (keys) => {
         keys.forEach( (dbkey) => {
           console.log(dbkey);
         });
@@ -71,7 +71,7 @@ const dbfn = {
   
   setRecord: (dbkey, data) => {
     db.set(dbkey, data)
-      .then(() => {
+      .then( () => {
         console.log(`${dbkey} data logged.`);
         return true;
       })
