@@ -1,4 +1,4 @@
-d// For ES6 Projects
+// For ES6 Projects
 
 // Import & Declare replit Database
 import Database from '@replit/database';
