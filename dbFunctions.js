@@ -12,6 +12,7 @@ const dbfn = {
         keys.forEach( (dbkey) => {
           console.log(dbkey);
         });
+        return keys;
       });
   }, 
   
