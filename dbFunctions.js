@@ -13,6 +13,9 @@ const dbfn = {
           console.log(dbkey);
         });
         return keys;
+      })
+      .then( (keys) => {
+        // Add Code Here
       });
   }, 
   
@@ -20,7 +23,11 @@ const dbfn = {
     db.get(dbkey)
       .then( (value) => {
         console.log(`\n${dbkey} contains: \n`, value);
-      });
+        return value;
+      })
+      .then( (value) => {
+        // Add Code Here
+      });;
   },
 
   logProperty: (dbkey, property) => {
@@ -29,30 +36,48 @@ const dbfn = {
       .then( (obj) => {
         console.log(`${dbkey}.${dbfn.property} contains:`, 
                     obj[dbfn.property]);
+        return obj[dbfn.property];
+      })
+      .then( (property) => {
+        // Add Code Here
       });
+    // Return dbfn.property to empty string
+    dbfn.property = '';
   },
   
   deleteRecord: (dbkey) => {
     db.delete(dbkey)
       .then( () => {
         console.log(`deleted ${dbkey}`)
+        return true;
+      }).then( (success) => {
+        // Add Code Here
       });
   },
 
   deleteAll: () => {
-    db.list().then( (dbkeys) => {
-      dbkeys.forEach( (key) => {
-        db.delete(key);
+    db.list()
+      .then( (dbkeys) => {
+        dbkeys.forEach( (key) => {
+          db.delete(key);
+        });
+        console.log("All db records deleted");
+        return true;
+      })
+      .then( (success) => {
+        // Add Code Here
       });
-      console.log("All db records deleted");
-    });
   },
   
   setRecord: (dbkey, data) => {
     db.set(dbkey, data)
       .then(() => {
         console.log(`${dbkey} data logged.`);
+        return true;
       })
+      .then( (success) => {
+        // Add Code Here
+      });
   },
 
   property: ''
