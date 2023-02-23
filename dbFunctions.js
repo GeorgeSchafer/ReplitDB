@@ -41,8 +41,7 @@ const dbfn = {
       .then( (property) => {
         // Add Code Here
       });
-    // Return dbfn.property to empty string
-    dbfn.property = '';
+    dbfn.reset();
   },
   
   deleteRecord: (dbkey) => {
@@ -79,8 +78,13 @@ const dbfn = {
         // Add Code Here
       });
   },
+  
+  reset: () => {
+    // Reset dbfn.property to an empty string
+    dbfn.property = ''
+  },
 
   property: ''
 }
 
-export {dbfn};
+export {dbfn as default};

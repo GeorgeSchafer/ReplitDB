@@ -1,8 +1,10 @@
 
 /node_modules
+/.git
 
 .replit
 .config
 package.json
 package-lock.json
 replit.nix
+gitPushCommitRepos.sh
