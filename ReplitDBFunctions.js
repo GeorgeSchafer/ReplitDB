@@ -1,8 +1,7 @@
-// For ES6 Projects
-
+// Imports
 // Import & Declare replit Database
-import Database from '@replit/database';
-const db = new Database();
+  import Database from '@replit/database';
+  const db = new Database();
 
 const dbfn = {
   
