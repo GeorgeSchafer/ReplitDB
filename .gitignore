@@ -4,8 +4,6 @@
 
 .replit
 .config
-// package.json
 package-lock.json
 replit.nix
 .gitMergeRepos.sh
-.gitPushRepos.sh
