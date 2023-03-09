@@ -12,7 +12,7 @@ There are two options for importing the Replit database. The ES6 option is not l
 
 #### import Database
 
-Add these lines to the top of your dbfns.js 
+Add these lines to the top of your ReplitDBFunctionsClass.js 
 
 ```
 import Database from '@replit/database';
@@ -30,7 +30,7 @@ Add this line to the root of the package.json object for ES6 Projects.
 #### Import dbfunctions into desired file
 
 ```
-import {dbfn} from './dbfns.js';
+import ReplitDBFunctions from './ReplitDBFunctionsClass.js';
 ```
 
 ### for standard projects
