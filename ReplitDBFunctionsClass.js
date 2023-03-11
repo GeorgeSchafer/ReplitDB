@@ -1,13 +1,12 @@
-// Imports
-// Import & Declare replit Database
-  import Database from '@replit/database';
-  const db = new Database();
+// Import & Declare Replit Database
+import Database from '@replit/database';
+const db = new Database();
 
 class ReplitDBFunctions {
 
   constructor(){
     
-    this.property = '';
+    this.temp = null;
     
   }
 
@@ -73,6 +72,10 @@ class ReplitDBFunctions {
       });
   }
 
+  getRecord(dbkey){
+    return db.get(dbkey);
+  }
+            
   setRecord(dbkey, data){
     db.set(dbkey, data)
       .then( () => {
@@ -86,7 +89,7 @@ class ReplitDBFunctions {
 
   reset(){
     // Reset dbfn.property to an empty string
-    this.property = ''
+    this.temp = null;
   }
   
 }
