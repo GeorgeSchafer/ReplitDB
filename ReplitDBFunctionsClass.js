@@ -26,13 +26,6 @@ class ReplitDBFunctions {
     logAllRecords(){
         db.list()
           .then( (keys) => {
-            keys.forEach( (dbkey) => {
-              console.log(dbkey);
-            });
-            return keys;
-          })
-          .then( (keys) => {
-            // Add Code Here
               keys.forEach( dbkey => {
                   this.logRecord(dbkey);
               } );
