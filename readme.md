@@ -12,7 +12,7 @@ There are two options for importing the Replit database. The ES6 option is not l
 
 #### import Database
 
-Add these lines to the top of your ReplitDBFunctionsClass.js 
+Add these lines to the top of your ReplitDBFunctions.js 
 
 ```
 import Database from '@replit/database';
@@ -30,7 +30,7 @@ Add this line to the root of the package.json object for ES6 Projects.
 #### Import dbfunctions into desired file
 
 ```
-import ReplitDBFunctions from './ReplitDBFunctionsClass.js';
+import ReplitDBFunctions from './ReplitDBFunctions.js';
 ```
 
 ### for standard projects
@@ -42,10 +42,19 @@ const Database = require("@replit/database");
 const db = new Database();
 ```
 
+#### remove export
+
+Remove this line from the bottom of ReplitDBFunctions.js
+
+```
+export { ReplitDB as default };
+```
+
 #### Import dbfunctions into desired file
 
 ```
-import {dbfn} from './dbfns.js';
+const ReplitDB = require('./ReplitDBFunctions.js');
+const rdb = new ReplitDB();
 ```
 
 #### package.json
