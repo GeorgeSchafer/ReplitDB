@@ -2,6 +2,8 @@
 import Database from '@replit/database';
 const db = new Database();
 
+// const db = require('@replit/database');
+
 class ReplitDBFunctions {
 
   constructor(){
