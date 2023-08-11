@@ -4,7 +4,7 @@ const db = new Database();
 
 // const db = require('@replit/database');
 
-class ReplitDBFunctions {
+class ReplitDB {
 
   constructor(){
     
@@ -105,4 +105,5 @@ class ReplitDBFunctions {
   
 }
 
-export {ReplitDBFunctions as default};
+export {ReplitDB as default};
+// exports.module = ReplitDB;
