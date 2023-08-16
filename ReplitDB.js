@@ -1,19 +1,19 @@
 // Import & Declare Replit Database
 import Database from '@replit/database';
-const db = new Database();
+// const Database = require('@replit/database')
+const db = new Database()
 
-// const db = require('@replit/database');
 
-class ReplitDB {
+class ReplitDB extends Database {
 
   constructor(){
-    
+    super()
     this.temp = null;
     
   }
 
   list(){
-    db.list()
+    this.list()
       .then( (keys) => {
         keys.forEach( (dbkey) => {
           console.log(dbkey);
@@ -22,11 +22,12 @@ class ReplitDB {
       })
       .then( (keys) => {
         // Add Code Here
+        
       });
   }
   
     logAllRecords(){
-        db.list()
+        this.list()
           .then( (keys) => {
               keys.forEach( dbkey => {
                   this.logRecord(dbkey);
@@ -35,7 +36,7 @@ class ReplitDB {
     }
   
   logRecord(dbkey){
-    db.get(dbkey)
+    this.get(dbkey)
       .then( (value) => {
         console.log(`\n${dbkey} contains: \n`, value);
         return value;
@@ -47,7 +48,7 @@ class ReplitDB {
   
   logProperty(dbkey, property){
     this.property = property;
-    db.get(dbkey)
+    this.get(dbkey)
       .then( (obj) => {
         console.log(`${dbkey}.${dbfn.property} contains:`, 
                     obj[dbfn.property]);
@@ -60,7 +61,7 @@ class ReplitDB {
   }
     
   deleteRecord(dbkey){
-    db.delete(dbkey)
+    this.delete(dbkey)
       .then( () => {
         console.log(`deleted ${dbkey}`)
         return true;
@@ -70,10 +71,10 @@ class ReplitDB {
   }
 
   deleteAll(){
-    db.list()
+    this.list()
       .then( (dbkeys) => {
         dbkeys.forEach( (key) => {
-          db.delete(key);
+          this.delete(key);
         });
         console.log("All db records deleted");
         return true;
@@ -84,11 +85,11 @@ class ReplitDB {
   }
 
   getRecord(dbkey){
-    return db.get(dbkey);
+    return this.get(dbkey);
   }
             
   setRecord(dbkey, data){
-    db.set(dbkey, data)
+    this.set(dbkey, data)
       .then( () => {
         console.log(`${dbkey} data logged.`);
         return true;
@@ -104,6 +105,5 @@ class ReplitDB {
   }
   
 }
-
 export {ReplitDB as default};
-// exports.module = ReplitDB;
+// module.exports = ReplitDB;
