@@ -1,4 +1,4 @@
-// Import & Declare Replit Database
+// require syntax
 const Database = require('@replit/database')
 const db = new Database()
 

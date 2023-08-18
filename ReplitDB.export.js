@@ -1,4 +1,4 @@
-// Import & Declare Replit Database
+// import syntax
 import Database from '@replit/database';
 const db = new Database()
 
