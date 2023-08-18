@@ -1,8 +1,14 @@
 // require syntax
 const dotenv = require('dotenv')
 const Database = require('@replit/database')
+<<<<<<< HEAD
 const db = new Database()
 
+=======
+// const db = new Database()
+/** Use this declaration when working locally on Replit Database */
+const db = new Database(process.env.REPLITDB)
+>>>>>>> ccd07c238b6682785216ce4fd3abd09dec77478e
 
 console.log('shell script test')
 
