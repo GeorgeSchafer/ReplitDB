@@ -1,6 +1,5 @@
 // Import & Declare Replit Database
-import Database from '@replit/database';
-// const Database = require('@replit/database')
+const Database = require('@replit/database')
 const db = new Database()
 
 
@@ -105,5 +104,7 @@ class ReplitDB extends Database {
   }
   
 }
-export {ReplitDB as default};
-// module.exports = ReplitDB;
+
+
+
+module.exports = ReplitDB;
