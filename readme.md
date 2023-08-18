@@ -1,6 +1,6 @@
 [Replit](https://replit.com/@GeorgeSchafer/ReplitDB) project
 
-[Github Repo](https://github.com/GeorgeSchafer/ReplitDBFunctions)
+[Github Repo](https://github.com/GeorgeSchafer/ReplitDD)
 
 # Setup
 
@@ -12,7 +12,7 @@ There are two options for importing the Replit database. The ES6 option is not l
 
 #### import Database
 
-Add these lines to the top of your ReplitDBFunctions.js 
+Add these lines to the top of your ReplitDB.js 
 
 ```
 import Database from '@replit/database';

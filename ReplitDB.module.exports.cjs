@@ -2,6 +2,7 @@
 const Database = require('@replit/database')
 const db = new Database()
 
+console.log('shell script test')
 
 class ReplitDB extends Database {
 
