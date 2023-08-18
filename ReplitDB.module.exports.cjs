@@ -3,6 +3,8 @@ const dotenv = require('dotenv')
 const Database = require('@replit/database')
 const db = new Database()
 
+/** Use this declaration when working locally on Replit Database */
+// const db = new Database(process.env.REPLITDB)
 
 console.log('shell script test')
 
