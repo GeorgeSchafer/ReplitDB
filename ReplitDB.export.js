@@ -14,19 +14,19 @@ export default class ReplitDB extends Database {
     
   }
 
-  list(){
-    this.list()
-      .then( (keys) => {
-        keys.forEach( (dbkey) => {
-          console.log(dbkey);
-        });
-        return keys;
-      })
-      .then( (keys) => {
-        // Add Code Here
+  // list(){
+  //   this.list()
+  //     .then( (keys) => {
+  //       keys.forEach( (dbkey) => {
+  //         console.log(dbkey);
+  //       });
+  //       return keys;
+  //     })
+  //     .then( (keys) => {
+  //       // Add Code Here
         
-      });
-  }
+  //     });
+  // }
   
     logAllRecords(){
         this.list()
