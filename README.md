@@ -10,29 +10,37 @@ There are two options for importing the Replit database. The ES6 option is not l
 
 ### for ES6 Syntax
 
+### File Choice
+
+Use `e.ReplitDB.js`
+
 #### import Database
 
-Use the file called e.ReplitDB.js
+
+```
+import ReplitDB from '/path/to/e.ReplitDB.js'
+```
 
 #### *Optional* package.json
 
 Add this line to the root of the package.json object for ES6 Projects.
 
 ```
+
 "type": "module",
 ```
 
 #### Import ReplitDB into desired file
 
 ```
-import ReplitDB from './e.ReplitDB.js';
+import ReplitDB from 'path/to/e.ReplitDB.js';
 ```
 
 ### require() Syntax
 
-#### import Database
+#### File Choice
 
-Use the `m.e.ReplitDB.cjs`.
+Use `m.e.ReplitDB.cjs`.
 
 #### import into desired file
 
