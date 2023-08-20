@@ -44,6 +44,6 @@ Use `m.e.ReplitDB.cjs`.
 #### import into desired file
 
 ```
-const ReplitDB = require('./ReplitDBFunctions.js');
+const ReplitDB = require('path/to/m.e.ReplitDB.cjs');
 const rdb = new ReplitDB();
 ```
