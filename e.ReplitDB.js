@@ -1,11 +1,10 @@
-// require syntax
-const dotenv = require('dotenv')
-const Database = require('@replit/database')
+// import syntax
+import Database from '@replit/database';
 const db = new Database()
 /** Use this declaration when working locally on Replit Database */
 // const db = new Database(process.env.REPLITDB)
 
-console.log('shell script test')
+
 
 class ReplitDB extends Database {
 
@@ -13,20 +12,6 @@ class ReplitDB extends Database {
     super()
     this.temp = null;
     
-  }
-
-  list(){
-    this.list()
-      .then( (keys) => {
-        keys.forEach( (dbkey) => {
-          console.log(dbkey);
-        });
-        return keys;
-      })
-      .then( (keys) => {
-        // Add Code Here
-        
-      });
   }
   
     logAllRecords(){
@@ -109,6 +94,4 @@ class ReplitDB extends Database {
   
 }
 
-
-
-module.exports = ReplitDB;
+export { ReplitDB }
