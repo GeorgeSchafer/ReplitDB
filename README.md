@@ -10,12 +10,11 @@ There are two options for importing the Replit database. The ES6 option is not l
 
 ### for ES6 Syntax
 
-### File Choice
+#### File Choice
 
 Use `e.ReplitDB.js`
 
 #### import Database
-
 
 ```
 import ReplitDB from '/path/to/e.ReplitDB.js'
@@ -48,4 +47,3 @@ Use `m.e.ReplitDB.cjs`.
 const ReplitDB = require('./ReplitDBFunctions.js');
 const rdb = new ReplitDB();
 ```
-
