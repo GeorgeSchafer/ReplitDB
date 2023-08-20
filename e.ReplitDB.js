@@ -6,7 +6,7 @@ const db = new Database()
 
 
 
-export default class ReplitDB extends Database {
+class ReplitDB extends Database {
 
   constructor(){
     super()
@@ -93,3 +93,5 @@ export default class ReplitDB extends Database {
   }
   
 }
+
+export { ReplitDB }

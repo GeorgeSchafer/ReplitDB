@@ -5,7 +5,8 @@ const Database = require('@replit/database')
 /** Use this declaration when working locally on Replit Database */
 const db = new Database(process.env.REPLITDB_URL)
 
-console.log('shell script test')
+
+
 
 class ReplitDB extends Database {
 
@@ -14,15 +15,15 @@ class ReplitDB extends Database {
     this.temp = null;
     
   }
-
-    logAllRecords(){
+  
+  logAllRecords(){
         this.list()
           .then( (keys) => {
               keys.forEach( dbkey => {
                   this.logRecord(dbkey);
               } );
           });
-    }
+  }
   
   logRecord(dbkey){
     this.get(dbkey)
