@@ -6,9 +6,9 @@
 
 ## Import Replit database
 
-There are two options for importing the Replit database. The ES6 option is not listed in the [Replit Database documentation](https://docs.replit.com/hosting/databases/replit-database) at the time of writing. This library is set up for ES6 by default.
+There are two options for importing the Replit database. The ES6 option is not listed in the [Replit Database documentation](https://docs.replit.com/hosting/databases/replit-database) at the time of writing. This library provides options for both ES6 and CommonJS syntax.
 
-### for ES6 Syntax
+### ES6 Syntax
 
 #### File Choice
 
