@@ -1,8 +1,6 @@
 // import syntax
 import Database from '@replit/database';
 const db = new Database()
-/** Use this declaration when working locally on Replit Database */
-// const db = new Database(process.env.REPLITDB)
 
 
 
@@ -88,7 +86,7 @@ class ReplitDB extends Database {
   }
 
   reset(){
-    // Reset dbfn.property to an empty string
+    // Reset this.temp to a null value
     this.temp = null;
   }
   
