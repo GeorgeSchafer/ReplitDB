@@ -1,4 +1,5 @@
-import {dbfn} from './dbFunctions.js';
+import { ReplitDB } from './ReplitDB/ReplitDB.cjs';
+const dbfn = new ReplitDB();
 
 console.log('Welcome, check out the readme for tips.');
 
