@@ -2,7 +2,7 @@
   "name": "nodejs",
   "version": "1.0.0",
   "description": "Classes that incorporate the Replit Database class and adds functionality",
-  "main": "index.js",
+  "main": "ReplitDB.js",
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
