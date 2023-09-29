@@ -4,8 +4,7 @@ const db = new Database()
 
 
 
-
-class ReplitDB extends Database {
+module.exports = class ReplitDB extends Database {
 
   constructor(){
     super()
@@ -34,17 +33,20 @@ class ReplitDB extends Database {
   }
   
   logProperty(dbkey, property){
+      /*
+            @todo fix this
+      */
     this.property = property;
     this.get(dbkey)
       .then( (obj) => {
-        console.log(`${dbkey}.${dbfn.property} contains:`, 
-                    obj[dbfn.property]);
-        return obj[dbfn.property];
+        console.log(`${dbkey}.${db[property]} contains:`, 
+                    obj[property]);
+        return obj[property];
       })
       .then( (property) => {
         // Add Code Here
       });
-    dbfn.reset();
+    this.reset();
   }
     
   deleteRecord(dbkey){
@@ -87,12 +89,8 @@ class ReplitDB extends Database {
   }
 
   reset(){
-    // Reset dbfn.property to an empty string
+    // Reset db.property to an empty string
     this.temp = null;
   }
   
 }
-
-
-
-module.exports = ReplitDB;
