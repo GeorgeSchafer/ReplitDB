@@ -18,7 +18,7 @@ describe('ReplitDB.cjs', () => {
     })
 
     describe('Setters and Getters', async () => {    
-        it('db.getRecord(key,value)', async () => {
+        it('db.getRecord(key,value)', async (done) => {
             const db = new ReplitDB()
             let key = 'movies',
                 property = { v: 'Vendetta' }
