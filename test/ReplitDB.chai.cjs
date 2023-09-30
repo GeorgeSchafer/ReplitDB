@@ -22,9 +22,9 @@ describe('ReplitDB.cjs', () => {
             const db = new ReplitDB()
             let key = 'movies',
                 property = { v: 'Vendetta' }
-            await db.set(key, property).done()
-            const record = await db.getRecord(key).done()
-            const tables = await db.list().done()
+            await db.set(key, property)
+            const record = await db.getRecord(key)
+            const tables = await db.list()
 
             // setTimeout(anon, 1000)
             expect(record).to.eql({v: 'Vendetta'})

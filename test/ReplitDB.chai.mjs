@@ -18,7 +18,7 @@ describe('ReplitDB.mjs', () => {
     })
 
     describe('Setters and Getters', async () => {    
-        it('db.getRecord(key,value)', async (done) => {
+        it('db.getRecord(key,value)', async () => {
             const db = new ReplitDB()
             let key = 'movies',
                 property = { v: 'Vendetta' }
@@ -30,7 +30,6 @@ describe('ReplitDB.mjs', () => {
             expect(record).to.eql({v: 'Vendetta'})
             expect(record.v).to.equal('Vendetta')
             expect(tables[0]).to.equal(key)
-            // done()
         })
     })
 })
