@@ -1,4 +1,5 @@
-// Run with mocha test --exit
+// Run with 
+// $ mocha test --exit
 
 const expect = require('chai').expect;
 
@@ -21,11 +22,11 @@ describe('ReplitDB.cjs', () => {
             const db = new ReplitDB()
             let key = 'movies',
                 property = { v: 'Vendetta' }
-            await db.set(key, property)
-            const record = await db.getRecord(key)
-            const tables = await db.list()
+            await db.set(key, property).done()
+            const record = await db.getRecord(key).done()
+            const tables = await db.list().done()
 
-            setTimeout(anon, 1000)
+            // setTimeout(anon, 1000)
             expect(record).to.eql({v: 'Vendetta'})
             expect(record.v).to.equal('Vendetta')
             expect(tables[0]).to.equal(key)
