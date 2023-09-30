@@ -1,13 +1,10 @@
-// Run with mocha test --exit
-
+// Run with mocha $ test --exit
 import {expect} from 'chai';
 import ReplitDB from '../ReplitDB.cjs';
 
-const db = new ReplitDB()
-const anon = () => {}
 
-console.log('Welcome, check out the readme for tips.');
-
+const anon = new Promise((resolveOuter) => {resolveOuter()})
+                         
 describe('ReplitDB.mjs', () => {
 
     describe('Constructor', () => {
@@ -18,7 +15,7 @@ describe('ReplitDB.mjs', () => {
     })
 
     describe('Setters and Getters', async () => {    
-        it('db.getRecord(key,value)', async (done) => {
+        it('db.getRecord(key,value)', async () => {
             const db = new ReplitDB()
             let key = 'movies',
                 property = { v: 'Vendetta' }
@@ -26,10 +23,10 @@ describe('ReplitDB.mjs', () => {
             const record = await db.getRecord(key)
             const tables = await db.list()
 
-            // setTimeout(anon, 1000)
             expect(record).to.eql({v: 'Vendetta'})
             expect(record.v).to.equal('Vendetta')
             expect(tables[0]).to.equal(key)
+            return anon;
         })
     })
 })

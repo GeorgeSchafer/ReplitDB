@@ -2,11 +2,8 @@
 // $ mocha test --exit
 
 const expect = require('chai').expect;
-
 const ReplitDB = require('../ReplitDB.cjs')
-const anon = () => {}
-
-console.log('Welcome, check out the readme for tips.');
+const anon = new Promise((resolveOuter) => {resolveOuter()})
 
 describe('ReplitDB.cjs', () => {
 
@@ -18,7 +15,7 @@ describe('ReplitDB.cjs', () => {
     })
 
     describe('Setters and Getters', async () => {    
-        it('db.getRecord(key,value)', async (done) => {
+        it('db.getRecord(key,value)', async () => {
             const db = new ReplitDB()
             let key = 'movies',
                 property = { v: 'Vendetta' }
@@ -26,10 +23,10 @@ describe('ReplitDB.cjs', () => {
             const record = await db.getRecord(key)
             const tables = await db.list()
 
-            // setTimeout(anon, 1000)
             expect(record).to.eql({v: 'Vendetta'})
             expect(record.v).to.equal('Vendetta')
             expect(tables[0]).to.equal(key)
+            return anon;
         })
     })
 })
