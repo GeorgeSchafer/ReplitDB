@@ -27,7 +27,6 @@ import ReplitDB from '/path/to/ReplitDB/ReplitDB.mjs'
 Add this line to the root of the package.json object for ES6 Projects.
 
 ```
-
 "type": "module",
 ```
 
