@@ -1,6 +1,10 @@
-
-
-
+/.config
+/.upm
+/.git
 
 .gitignore
+.replit
 
+/node_modules
+
+replit.nix
