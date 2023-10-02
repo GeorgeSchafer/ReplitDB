@@ -24,7 +24,8 @@ export default class ReplitDB extends Database {
                 return true;
             })
             .then( (success) => {
-            // Add Code Here
+                // Add Code Here
+                return success;
             })
             .catch( (e) => {
                 console.log(e)
@@ -66,6 +67,44 @@ export default class ReplitDB extends Database {
                 return false;
             })
     }
+
+    async toString(dbkey){
+        let value = await this.get(dbkey)
+            .then(value => {
+                return value;
+            })
+            .catch(e => console.log(e))
+
+        value = JSON.stringify(value)
+        
+        return `"${dbkey}":${value}`
+        
+    }
+    
+    // async toString(){
+    //     const string = new String();
+
+    //     await this.list()
+    //         .then( keys => {
+    //             keys.forEach( dbkey => {
+    //                 string += await this.toString(key)
+    //             })
+    //         })
+    //         .catch(e => console.log(e))
+
+    //     return string;
+    // }
+  
+    async logRecord(dbkey){
+        await this.get(dbkey)
+            .then( (value) => {
+                return {key: dbkey, value: value};
+            })
+            .then( (value) => {
+                // Add Code Here
+            })
+            .catch(e => console.log(e))
+    }
   
     async logAllRecords(){
         await this.list()
@@ -77,19 +116,6 @@ export default class ReplitDB extends Database {
             .catch( (e) => {
                 console.log(e)
             } )
-    }
-  
-    async logRecord(dbkey){
-        await this.get(dbkey)
-            .then( (value) => {
-                return {key: dbkey, value: value};
-            })
-            .then( (value) => {
-                // Add Code Here
-            })
-            .catch( (e) => {
-                console.log(e)
-            })
     }
   
     async logProperty(dbkeyStr, propertyStr){
