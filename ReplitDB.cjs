@@ -77,24 +77,10 @@ module.exports = class ReplitDB extends Database {
 
         value = JSON.stringify(value)
         
-        return `"${dbkey}":${value}`
+        return '' + value
         
     }
-    
-    // async toString(){
-    //     const string = new String();
 
-    //     await this.list()
-    //         .then( keys => {
-    //             keys.forEach( dbkey => {
-    //                 string += await this.toString(key)
-    //             })
-    //         })
-    //         .catch(e => console.log(e))
-
-    //     return string;
-    // }
-  
     async logRecord(dbkey){
         await this.get(dbkey)
             .then( (value) => {
@@ -123,10 +109,9 @@ module.exports = class ReplitDB extends Database {
 
         await this.get(dbkeyStr)
             .then( (obj) => {
-                // console.log(`${dbkeyStr} contains:`, obj
                 return obj[this.temp];
             })
-            .then( (propertyStr) => {
+            .then( (property) => {
                 // Add Code Here
             })
             .catch( (e) => {
@@ -142,4 +127,3 @@ module.exports = class ReplitDB extends Database {
     }
   
 }
-

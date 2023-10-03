@@ -22,7 +22,7 @@ describe('ReplitDB.mjs', () => {
         count++;
     })
 
-    describe('Class methods', async () => {
+    describe('Class Methods', async () => {
 
         it(`Test ${count}: ReplitDB.setRecord(key,property), .getRecord(key)`, 
             async () => {
@@ -88,7 +88,7 @@ describe('ReplitDB.mjs', () => {
                 await db.setRecord(key, value)
                 string = await db.toString(key)
 
-                expect(string).to.equal('"images":{"a":"Avedon"}')
+                expect(string).to.equal('{"a":"Avedon"}')
 
                 return await promise;
             }
@@ -102,12 +102,13 @@ describe('ReplitDB.mjs', () => {
 
 /** 
 describe('Descriptions', () => {
-  describe('Parameter Description', () => {
-    it('Test summary', 
+  describe('Test Description', () => {
+    it(`Test ${count}: Component Description`, 
         () => {
             // Expectation
         }
     )
+    count++;
   })
 })
 */
