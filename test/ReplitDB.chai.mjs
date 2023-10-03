@@ -7,26 +7,31 @@ import ReplitDB from '../ReplitDB.mjs';
 
 
 const promise = new Promise((resolve) => {resolve()})
+let count = 1;
 
 describe('ReplitDB.mjs', () => {
 
     describe('Constructor', () => {
-        it('Temp should return null', 
+        it(`Test ${count}: ReplitDB.temp should return null`, 
             () => {
                 const db = new ReplitDB()
                 expect(db.temp).to.eql(null)
-            })
+            }
+        )
+        
+        count++;
     })
 
-    describe('Class methods', async () => {
+    describe('Class Methods', async () => {
 
-        it('.setRecord(key,property), .getRecord(key)', 
+        it(`Test ${count}: ReplitDB.setRecord(key,property), .getRecord(key)`, 
             async () => {
                 const db = new ReplitDB()
                 let key = 'movies';
                 let property = { v: 'Vendetta' }
                 let record, tables;
-                
+
+                await db.deleteAll()
                 await db.setRecord(key, property)
                 record = await db.getRecord(key)
                 tables = await db.list()
@@ -36,9 +41,11 @@ describe('ReplitDB.mjs', () => {
                 expect(tables[0]).to.equal('movies')
                 
                 return await promise;
-        })
+            }
+        )
+        count++;
 
-        it('.deleteRecord(key)', 
+        it(`Test ${count}: ReplitDB.deleteRecord(key)`, 
             async () => {
                 // Expectation
                 const db = new ReplitDB()
@@ -50,9 +57,11 @@ describe('ReplitDB.mjs', () => {
                 expect(success1).to.be.true;
                 
                 return await promise;
-        })
+        }
+        )
+        count++;
 
-        it('.deleteAll()', 
+        it(`Test ${count}: ReplitDB.deleteAll()`, 
             async () => {
                 // Expectation
                 const db = new ReplitDB()
@@ -64,7 +73,27 @@ describe('ReplitDB.mjs', () => {
                 expect(success2).to.equal(true)
                 
                 return await promise;
-            })
+            }
+        )
+        count++;
+        
+        it(`Test ${count}: ReplitDB.toString(key)`, 
+            async () => {
+                // Expectation
+                const db = new ReplitDB()
+                const key = new String('images')
+                const value = { a: 'Avedon' }
+                let string = new String()
+
+                await db.setRecord(key, value)
+                string = await db.toString(key)
+
+                expect(string).to.equal('{"a":"Avedon"}')
+
+                return await promise;
+            }
+        )
+        count++;
     })
 })
 
@@ -73,11 +102,13 @@ describe('ReplitDB.mjs', () => {
 
 /** 
 describe('Descriptions', () => {
-  describe('Parameter Description', () => {
-    it('Test summary', 
+  describe('Test Description', () => {
+    it(`Test ${count}: Component Description`, 
         () => {
             // Expectation
-    });
-  });
-});
+        }
+    )
+    count++;
+  })
+})
 */
