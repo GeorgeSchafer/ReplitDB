@@ -41,7 +41,7 @@ module.exports = class ReplitDB extends Database {
     }
     
     async deleteRecord(dbkey){
-        const result = await this.delete(dbkey)
+        return await this.delete(dbkey)
             .then( () => {
                 // Add Code Here
                 return true;
@@ -49,9 +49,7 @@ module.exports = class ReplitDB extends Database {
             .catch( (e) => {
                 console.log(e)
                 return false;
-            })
-        
-        return result;
+            })        
     }
 
     async deleteAll(){
@@ -86,16 +84,17 @@ module.exports = class ReplitDB extends Database {
             .then( (value) => {
                 return {key: dbkey, value: value};
             })
-            .then( (value) => {
+            .then( (data) => {
                 // Add Code Here
+                console.log(data.key + ':', data.value)
             })
             .catch(e => console.log(e))
     }
   
     async logAllRecords(){
         await this.list()
-            .then( (keys) => {
-              keys.forEach( dbkey => {
+            .then( dbkeys => {
+              dbkeys.forEach( dbkey => {
                   this.logRecord(dbkey)
               } )
             })
@@ -103,23 +102,6 @@ module.exports = class ReplitDB extends Database {
                 console.log(e)
             } )
     }
-  
-    async logProperty(dbkeyStr, propertyStr){
-        this.temp = propertyStr;
-
-        await this.get(dbkeyStr)
-            .then( (obj) => {
-                return obj[this.temp];
-            })
-            .then( (property) => {
-                // Add Code Here
-            })
-            .catch( (e) => {
-                console.log(e)
-            })
-          
-            this.reset()
-        }
 
     reset(){
         // Reset this.temp to an empty string
