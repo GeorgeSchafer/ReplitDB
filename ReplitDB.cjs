@@ -18,7 +18,7 @@ module.exports = class ReplitDB extends Database {
     }
 
     async setRecord(dbkey, data){
-        await this.set(dbkey, data)
+        return await this.set(dbkey, data)
             .then( () => {
                 // console.log(`${dbkey} data logged.`)
                 return true;
@@ -29,6 +29,7 @@ module.exports = class ReplitDB extends Database {
             })
             .catch( (e) => {
                 console.log(e)
+                return false;
             } )
     }
 
