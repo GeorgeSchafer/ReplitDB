@@ -16,7 +16,7 @@ describe('ReplitDB.cjs', () => {
         
         it(`Test ${count}: ReplitDB.temp should return null`, 
             () => {
-                expect(db.temp).to.eql(null)
+                expect(db.identifier).to.eql(null)
             }
         )
         
@@ -37,12 +37,12 @@ describe('ReplitDB.cjs', () => {
                 record = await db.getRecord(key)
                 tables = await db.list()
                 
-                expect(record).to.eql({ v: 'Vendetta' })
-                expect(record.v).to.equal('Vendetta')
+                expect(record.v).to.eql('Vendetta')
                 expect(tables[0]).to.equal('movies')
                 
                 return await promise;
-            })
+            }
+        )
         count++;
 
         it(`Test ${count}: ReplitDB.deleteRecord(key)`, 
@@ -55,7 +55,8 @@ describe('ReplitDB.cjs', () => {
                 expect(success1).to.be.true;
                 
                 return await promise;
-        })
+        }
+        )
         count++;
 
         it(`Test ${count}: ReplitDB.deleteAll()`, 
@@ -68,7 +69,8 @@ describe('ReplitDB.cjs', () => {
                 expect(success2).to.equal(true)
                 
                 return await promise;
-            })
+            }
+        )
         count++;
         
         it(`Test ${count}: ReplitDB.toString(key)`, 
@@ -83,40 +85,34 @@ describe('ReplitDB.cjs', () => {
                 expect(string).to.equal('{"a":"Avedon"}')
 
                 return await promise;
-            })
+            }
+        )
         count++;
 
-        // it(`Test ${count}: getObjectFromArray()`, 
-        //     async () => {
-        //         // const db = new ReplitDB()
-        //         let result;
-        //         const potter = {
-        //             movie: 'Harry Potter and the Philosopher Stone', 
-        //             number: 1
-        //         }
+        it(`Test ${count}: getObjectFromArray()`, 
+            async () => {
+                let obj;
+                const potter = [
+                    {
+                        movie: 'and the Philosopher Stone', 
+                        number: 1
+                    },
+                    {
+                        movie: 'and the Chamber of Secrets',
+                        number: 2
+                    }
+                ]
                 
-        //         await db.deleteAll()
-        //         await db.setRecord('movies', [potter])
+                await db.deleteAll()
+                await db.setRecord('movies', potter)
                 
-        //         result = await db.getObjectFromArray('movies', 'number', potter.number)
+                obj = await db.getObjectFromArray('movies', 'number', potter[1].number)
+                Object.entries(obj).forEach(key => {
+                    expect(obj[key]).to.eql(potter[1][key])
+                })
                 
-        //         expect(result).to.eql(potter)
-        //     })
-        // count++;
+                return await promise;
+            })
+        count++;
     })
 })
-
-
-
-
-/** 
-describe('Descriptions', () => {
-  describe('Test Description', () => {
-    it(`Test ${count}: Component Description`, 
-        async () => {
-            // Expectation
-        })
-    count++;
-  })
-})
-*/

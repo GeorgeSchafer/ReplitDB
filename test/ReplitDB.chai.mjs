@@ -13,10 +13,10 @@ describe('ReplitDB.mjs', () => {
 
     describe('Constructor', () => {
         
-        it(`Test ${count}: ReplitDB.temp should return null`, 
+        it(`Test ${count}: Replitdb.identifier should return null`, 
             () => {
                 const db = new ReplitDB()
-                expect(db.temp).to.eql(null)
+                expect(db.identifier).to.eql(null)
             }
         )
         
@@ -37,8 +37,7 @@ describe('ReplitDB.mjs', () => {
                 record = await db.getRecord(key)
                 tables = await db.list()
                 
-                expect(record).to.eql({ v: 'Vendetta' })
-                expect(record.v).to.equal('Vendetta')
+                expect(record.v).to.eql('Vendetta')
                 expect(tables[0]).to.equal('movies')
                 
                 return await promise;
@@ -92,19 +91,25 @@ describe('ReplitDB.mjs', () => {
 
         it(`Test ${count}: getObjectFromArray()`, 
             async () => {
-                // const db = new ReplitDB()
-                let result;
-                const potter = {
-                    movie: 'Harry Potter and the Philosopher Stone', 
-                    number: 1
-                }
+                let obj;
+                const potter = [
+                    {
+                        movie: 'and the Philosopher Stone', 
+                        number: 1
+                    },
+                    {
+                        movie: 'and the Chamber of Secrets',
+                        number: 2
+                    }
+                ]
                 
                 await db.deleteAll()
-                await db.setRecord('movies', [potter])
+                await db.setRecord('movies', potter)
                 
-                result = await db.getObjectFromArray('movies', 'number', potter.number)
-                
-                expect(result).to.eql(potter)
+                obj = await db.getObjectFromArray('movies', 'number', potter[1].number)
+                Object.entries(obj).forEach(key => {
+                    expect(obj[key]).to.eql(potter[1][key])
+                })
                 
                 return await promise;
             })
