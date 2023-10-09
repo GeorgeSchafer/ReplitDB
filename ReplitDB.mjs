@@ -39,6 +39,19 @@ export default class ReplitDB extends Database {
                 console.log(e)
             })
     }
+
+    async getObjectFromArray(dbkey, objKey, identifier){
+        db.temp = {key: objKey, value: identifier};
+        const object = await this.getRecord(dbkey)
+            .then( data => data.json() )
+            .then( array => {
+                array.forEach( object => {
+                    if(object[db.temp.key] == db.temp.value){
+                        return object;
+                    }
+                })
+            } )
+    }
     
     async deleteRecord(dbkey){
         return await this.delete(dbkey)
