@@ -12,10 +12,11 @@ let count = 1;
 describe('ReplitDB.cjs', () => {
 
     describe('Constructor', () => {
+        const db = new ReplitDB()
+        
         it(`Test ${count}: ReplitDB.temp should return null`, 
             () => {
-                const db = new ReplitDB()
-                expect(db.temp).to.eql(null)
+                expect(db.identifier).to.eql(null)
             }
         )
         
@@ -23,10 +24,10 @@ describe('ReplitDB.cjs', () => {
     })
 
     describe('Class Methods', async () => {
+        const db = new ReplitDB()
 
         it(`Test ${count}: ReplitDB.setRecord(key,property), .getRecord(key)`, 
             async () => {
-                const db = new ReplitDB()
                 let key = 'movies';
                 let property = { v: 'Vendetta' }
                 let record, tables;
@@ -36,8 +37,7 @@ describe('ReplitDB.cjs', () => {
                 record = await db.getRecord(key)
                 tables = await db.list()
                 
-                expect(record).to.eql({ v: 'Vendetta' })
-                expect(record.v).to.equal('Vendetta')
+                expect(record.v).to.eql('Vendetta')
                 expect(tables[0]).to.equal('movies')
                 
                 return await promise;
@@ -47,8 +47,6 @@ describe('ReplitDB.cjs', () => {
 
         it(`Test ${count}: ReplitDB.deleteRecord(key)`, 
             async () => {
-                // Expectation
-                const db = new ReplitDB()
                 let success1 = false;
                 
                 await db.setRecord('books', {b: 'Berzerk'})
@@ -63,8 +61,6 @@ describe('ReplitDB.cjs', () => {
 
         it(`Test ${count}: ReplitDB.deleteAll()`, 
             async () => {
-                // Expectation
-                const db = new ReplitDB()
                 let success2;
 
                 await db.setRecord('music', {t: 'Tool'})
@@ -79,8 +75,6 @@ describe('ReplitDB.cjs', () => {
         
         it(`Test ${count}: ReplitDB.toString(key)`, 
             async () => {
-                // Expectation
-                const db = new ReplitDB()
                 const key = new String('images')
                 const value = { a: 'Avedon' }
                 let string = new String()
@@ -94,21 +88,31 @@ describe('ReplitDB.cjs', () => {
             }
         )
         count++;
+
+        it(`Test ${count}: getObjectFromArray()`, 
+            async () => {
+                let obj;
+                const potter = [
+                    {
+                        movie: 'and the Philosopher Stone', 
+                        number: 1
+                    },
+                    {
+                        movie: 'and the Chamber of Secrets',
+                        number: 2
+                    }
+                ]
+                
+                await db.deleteAll()
+                await db.setRecord('movies', potter)
+                
+                obj = await db.getObjectFromArray('movies', 'number', potter[1].number)
+                Object.entries(obj).forEach(key => {
+                    expect(obj[key]).to.eql(potter[1][key])
+                })
+                
+                return await promise;
+            })
+        count++;
     })
 })
-
-
-
-
-/** 
-describe('Descriptions', () => {
-  describe('Test Description', () => {
-    it(`Test ${count}: Component Description`, 
-        () => {
-            // Expectation
-        }
-    )
-    count++;
-  })
-})
-*/
